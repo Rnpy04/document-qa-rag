@@ -1,0 +1,27 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  <div id="content-main">
+    <h1>پرسش از اسناد</h1>
+    <p>پرسش را بنویسید. پاسخ و منابع استفاده‌شده در همین صفحه نمایش داده و در تاریخچه ذخیره می‌شوند.</p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="submit-row"><input type="submit" value="ارسال پرسش"></div>
+    </form>
+
+    {% if result %}
+      <fieldset class="module aligned">
+        <h2>پاسخ</h2>
+        <p style="white-space: pre-wrap">{{ result.answer }}</p>
+        <h2>عبارت‌های مرتبط برای جست‌وجو</h2>
+        {% if result.expanded_terms %}
+          <ul>{% for term in result.expanded_terms %}<li>{{ term }}</li>{% endfor %}</ul>
+        {% else %}<p>عبارت اضافی تولید نشد.</p>{% endif %}
+        <p><strong>روش گسترش:</strong> {{ result.expansion_method }} | <strong>پاسخ با LLM:</strong> {{ result.used_llm|yesno:"بله,خیر" }}</p>
+        <h2>منابع پاسخ</h2>
+        <ul>{% for source in result.sources.all %}<li><strong>{{ source.document.title }}</strong> - بخش {{ source.position }}</li>{% endfor %}</ul>
+      </fieldset>
+    {% endif %}
+  </div>
+{% endblock %}

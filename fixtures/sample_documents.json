@@ -1,0 +1,4 @@
+[
+  {"model": "knowledge.document", "pk": 1, "fields": {"title": "نمونه - RAG", "source_file": null, "content": "RAG یعنی ابتدا محتوای مرتبط بازیابی می‌شود، سپس مدل زبانی با همان محتوا پاسخ می‌دهد.", "created_at": "2026-01-01T00:00:00Z", "updated_at": "2026-01-01T00:00:00Z"}},
+  {"model": "knowledge.document", "pk": 2, "fields": {"title": "نمونه - Docker", "source_file": null, "content": "Docker برنامه و وابستگی‌های آن را در یک محیط یکسان اجرا می‌کند.", "created_at": "2026-01-01T00:00:00Z", "updated_at": "2026-01-01T00:00:00Z"}}
+]
